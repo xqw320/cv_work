@@ -21,7 +21,7 @@ import numpy as np
 parser = argparse.ArgumentParser(description='transt evaluation')
 parser.add_argument('--tracker_path', '-p', type=str, default='',
                     help='tracker result path')
-parser.add_argument('--dataset', '-d', type=str, default='LaSOT',
+parser.add_argument('--dataset', '-d', type=str, default='OTB',
                     help='dataset name')
 parser.add_argument('--num', '-n', default=1, type=int,
                     help='number of thread to eval')
@@ -48,7 +48,7 @@ def main():
                                          'testing_dataset'))
     root = os.path.join(root, args.dataset)
     if 'OTB' in args.dataset:
-        dataset = OTBDataset(args.dataset, root)
+        dataset = OTBDataset(args.dataset,'./pysot_toolkit/OTB100')
         dataset.set_tracker(tracker_dir, trackers)
         benchmark = OPEBenchmark(dataset)
         success_ret = {}
